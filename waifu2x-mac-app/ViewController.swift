@@ -39,7 +39,7 @@ class ViewController: NSViewController {
         dialog.allowsMultipleSelection = false
         dialog.canChooseDirectories = false
         dialog.allowedFileTypes = ["public.image"]
-        dialog.begin { (resp) in
+        dialog.beginSheetModal(for: view.window!) { (resp) in
             if resp == NSApplication.ModalResponse.OK {
                 let url = dialog.urls[0]
                 self.inImg.image = NSImage(contentsOf: url)
@@ -78,7 +78,7 @@ class ViewController: NSViewController {
         }
         let dialog = NSSavePanel()
         dialog.allowedFileTypes = ["public.png"]
-        dialog.begin { (resp) in
+        dialog.beginSheetModal(for: view.window!) { (resp) in
             if resp == NSApplication.ModalResponse.OK {
                 guard let url = dialog.url else {
                     return

@@ -15,14 +15,10 @@ extension NSImage {
         let height = Int(self.representations[0].pixelsHigh)
         var rect = NSRect.init(origin: .zero, size: CGSize(width: width, height: height))
         let cgimg = self.representations[0].cgImage(forProposedRect: &rect, context: nil, hints: nil)
-        let data = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height)
-        let alphaOnly = CGContext(data: data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: CGColorSpace.init(name: CGColorSpace.linearGray)!, bitmapInfo: CGImageAlphaInfo.alphaOnly.rawValue)
+        var data = [UInt8].init(repeating: 0, count: width * height)
+        let alphaOnly = CGContext(data: &data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: CGColorSpace.init(name: CGColorSpace.linearGray)!, bitmapInfo: CGImageAlphaInfo.alphaOnly.rawValue)
         alphaOnly?.draw(cgimg!, in: CGRect(x: 0, y: 0, width: width, height: height))
-        var result: [UInt8] = []
-        for i in 0 ..< width * height {
-            result.append(data[i])
-        }
-        return result
+        return data
     }
     
 }

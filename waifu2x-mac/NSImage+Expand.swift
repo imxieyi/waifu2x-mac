@@ -49,9 +49,9 @@ extension NSImage {
                 if withAlpha {
                     a = data[pixel + 3]
                     if a > 0 {
-                        fr *= 255 / Float(a)
-                        fg *= 255 / Float(a)
-                        fb *= 255 / Float(a)
+//                        fr *= 255 / Float(a)
+//                        fg *= 255 / Float(a)
+//                        fb *= 255 / Float(a)
                     }
                 }
                 arr[yy * exwidth + xx] = fr
