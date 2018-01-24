@@ -10,6 +10,9 @@ import Foundation
 import Metal
 import MetalKit
 
+class MetalNotAvailableError: Error {
+}
+
 class MetalBicubic {
     
     let device: MTLDevice!
@@ -18,6 +21,9 @@ class MetalBicubic {
     
     public init() throws {
         device = MTLCreateSystemDefaultDevice()
+        guard device != nil else {
+            throw MetalNotAvailableError()
+        }
         library = try device.makeDefaultLibrary(bundle: Bundle(for: type(of: self)))
         commandQueue = device.makeCommandQueue()
     }
