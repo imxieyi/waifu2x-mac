@@ -750,6 +750,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveImage:" target="XfG-lQ-9wD" id="fI6-Vs-jL6"/>
+                                </connections>
                             </button>
                             <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ve-eT-YHn">
                                 <rect key="frame" x="640" y="53" width="637" height="664"/>
@@ -758,7 +761,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ves-oJ-zWd" firstAttribute="top" secondItem="3ve-eT-YHn" secondAttribute="bottom" constant="6" id="0tA-U9-p8m"/>
-                            <constraint firstItem="Pj9-5a-kbo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6i-71-8CX" secondAttribute="trailing" symbolic="YES" id="2ke-WB-9Wg"/>
+                            <constraint firstItem="Pj9-5a-kbo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6i-71-8CX" secondAttribute="trailing" constant="12" symbolic="YES" id="2ke-WB-9Wg"/>
                             <constraint firstItem="r4u-Wb-jsD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="6" id="CEE-D8-lSA"/>
                             <constraint firstAttribute="trailing" secondItem="Pj9-5a-kbo" secondAttribute="trailing" constant="523" id="Dag-a8-H1t"/>
                             <constraint firstItem="Pj9-5a-kbo" firstAttribute="bottom" secondItem="Ves-oJ-zWd" secondAttribute="bottom" id="EzL-9r-3Rp"/>
@@ -772,7 +775,7 @@
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="6" id="bMu-cx-tcr"/>
                             <constraint firstItem="Ves-oJ-zWd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="528" id="h9x-B0-mxW"/>
                             <constraint firstItem="FLe-LW-Gg9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="6" id="lco-u4-SS7"/>
-                            <constraint firstItem="O6i-71-8CX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ves-oJ-zWd" secondAttribute="trailing" symbolic="YES" id="owp-J4-zyE"/>
+                            <constraint firstItem="O6i-71-8CX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ves-oJ-zWd" secondAttribute="trailing" constant="12" symbolic="YES" id="owp-J4-zyE"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="bottom" secondItem="r4u-Wb-jsD" secondAttribute="bottom" id="v6H-bK-Bxg"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="height" secondItem="r4u-Wb-jsD" secondAttribute="height" id="vmt-zz-CVl"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="width" secondItem="r4u-Wb-jsD" secondAttribute="width" id="wRo-nj-lvd"/>
@@ -782,6 +785,10 @@
                     <connections>
                         <outlet property="inImg" destination="r4u-Wb-jsD" id="8EJ-e7-aMf"/>
                         <outlet property="outImg" destination="3ve-eT-YHn" id="r9C-59-1Ks"/>
+                        <outlet property="pickBtn" destination="Ves-oJ-zWd" id="OSy-4z-AF9"/>
+                        <outlet property="processBtn" destination="O6i-71-8CX" id="7S2-RY-7R8"/>
+                        <outlet property="saveBtn" destination="Pj9-5a-kbo" id="YHR-Ve-fa6"/>
+                        <outlet property="status" destination="FLe-LW-Gg9" id="de3-z7-Cml"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

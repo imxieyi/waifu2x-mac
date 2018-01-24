@@ -17,7 +17,7 @@ extension NSImage {
         let cgimg = self.representations[0].cgImage(forProposedRect: &rect, context: nil, hints: nil)
         let data = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height)
         let alphaOnly = CGContext(data: data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: CGColorSpace.init(name: CGColorSpace.linearGray)!, bitmapInfo: CGImageAlphaInfo.alphaOnly.rawValue)
-        alphaOnly?.draw(cgImage(forProposedRect: &rect, context: nil, hints: nil)!, in: CGRect(x: 0, y: 0, width: width, height: height))
+        alphaOnly?.draw(cgimg!, in: CGRect(x: 0, y: 0, width: width, height: height))
         var result: [UInt8] = []
         for i in 0 ..< width * height {
             result.append(data[i])

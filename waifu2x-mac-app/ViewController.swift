@@ -13,6 +13,10 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var inImg: NSImageView!
     @IBOutlet weak var outImg: NSImageView!
+    @IBOutlet weak var pickBtn: NSButton!
+    @IBOutlet weak var processBtn: NSButton!
+    @IBOutlet weak var saveBtn: NSButton!
+    @IBOutlet weak var status: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,10 @@ class ViewController: NSViewController {
         guard let img = inImg.image else {
             return
         }
+        pickBtn.isEnabled = false
+        processBtn.isEnabled = false
+        saveBtn.isEnabled = false
+        let start = DispatchTime.now().uptimeNanoseconds
         background.async {
             guard let outImage = Waifu2x.run(img, model: Model.anime_noise2_scale2x) else {
                 return
@@ -55,6 +63,27 @@ class ViewController: NSViewController {
             DispatchQueue.main.async {
                 self.outImg.image = outImage
                 debugPrint("\(outImage.size)")
+                self.pickBtn.isEnabled = true
+                self.processBtn.isEnabled = true
+                self.saveBtn.isEnabled = true
+                let end = DispatchTime.now().uptimeNanoseconds
+                self.status.stringValue = "Time elapsed: \(Float(end - start) / 1_000_000_000)"
+            }
+        }
+    }
+    
+    @IBAction func saveImage(_ sender: Any) {
+        guard let oImg = outImg.image else {
+            return
+        }
+        let dialog = NSSavePanel()
+        dialog.allowedFileTypes = ["public.png"]
+        dialog.begin { (resp) in
+            if resp == NSApplication.ModalResponse.OK {
+                guard let url = dialog.url else {
+                    return
+                }
+                oImg.pngWrite(to: url)
             }
         }
     }
