@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  waifu2x-mac-app
 //
-//  Created by 谢宜 on 2018/1/24.
-//  Copyright © 2018年 谢宜. All rights reserved.
+//  Created by xieyi on 2018/1/24.
+//  Copyright © 2018年 xieyi. All rights reserved.
 //
 
 import Cocoa
@@ -18,14 +18,20 @@ class ViewController: NSViewController {
     @IBOutlet weak var saveBtn: NSButton!
     @IBOutlet weak var status: NSTextField!
     
+    static var instance: ViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        ViewController.instance = self
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.styleMask.remove(.resizable)
+        inImg.registerForDraggedTypes([.png, .tiff, .fileContents, .fileURL, .filePromise, .URL])
+        view.window?.registerForDraggedTypes([.png, .tiff, .fileContents, .fileURL, .filePromise, .URL])
+        view.registerForDraggedTypes([.png, .tiff, .fileContents, .fileURL, .filePromise, .URL])
     }
     
     override var representedObject: Any? {
@@ -83,10 +89,25 @@ class ViewController: NSViewController {
                 guard let url = dialog.url else {
                     return
                 }
-                oImg.pngWrite(to: url)
+                try! oImg.pngWrite(to: url)
             }
         }
     }
     
 }
 
+class DragImageView: NSImageView {
+    
+    override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+        let pboard = sender.draggingPasteboard()
+        if let types = pboard.types {
+            if types.contains(NSPasteboard.PasteboardType.png) || types.contains(NSPasteboard.PasteboardType.tiff) {
+                let wrapper = pboard.readFileWrapper()
+                let img = NSImage(data: (wrapper?.regularFileContents)!)
+                ViewController.instance.inImg.image = img
+            }
+        }
+        return true
+    }
+    
+}

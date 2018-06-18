@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  waifu2x-mac-app
 //
-//  Created by 谢宜 on 2018/1/24.
-//  Copyright © 2018年 谢宜. All rights reserved.
+//  Created by xieyi on 2018/1/24.
+//  Copyright © 2018年 xieyi. All rights reserved.
 //
 
 import Cocoa

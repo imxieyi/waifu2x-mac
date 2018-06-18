@@ -2,7 +2,7 @@
 //  BackgroundPipeline.swift
 //  waifu2x-ios
 //
-//  Created by 谢宜 on 2017/11/5.
+//  Created by xieyi on 2017/11/5.
 //  Copyright © 2017年 xieyi. All rights reserved.
 //
 

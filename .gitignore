@@ -68,3 +68,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Dependencies
+Dependencies/*
+!Dependencies/Package.swift
+!Dependencies/Rakefile

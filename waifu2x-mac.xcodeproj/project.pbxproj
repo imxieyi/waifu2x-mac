@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AACE77A20D821B20060240C /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */; };
+		8AC3DBEE20D82B6F00644896 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3DBED20D82B6F00644896 /* main.swift */; };
+		8AC3DBF220D82B8700644896 /* waifu2x_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; };
+		8AC3DBF520D82D6600644896 /* CommandLineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AACE77320D810DA0060240C /* CommandLineKit.framework */; };
 		8AC63C2D2018462E001498E0 /* waifu2x_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; };
 		8AC63C322018462E001498E0 /* waifu2x_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C312018462E001498E0 /* waifu2x_macTests.swift */; };
 		8AC63C342018462E001498E0 /* waifu2x_mac.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC63C262018462E001498E0 /* waifu2x_mac.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,10 +51,23 @@
 		8AC63CBF20184902001498E0 /* anime_noise3_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CAC20184902001498E0 /* anime_noise3_model.mlmodel */; };
 		8AC63CC320185D7D001498E0 /* waifu2x_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; };
 		8AC63CC420185D7D001498E0 /* waifu2x_mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8AC63CCA201878FA001498E0 /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8AACE77220D810DA0060240C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "CommandLine::CommandLineKit::Product";
+			remoteInfo = CommandLineKit;
+		};
+		8AACE77420D810DA0060240C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Dependencies::Dependencies::Product";
+			remoteInfo = Dependencies;
+		};
 		8AC63C2E2018462E001498E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AC63C1A2018462E001498E0 /* Project object */;
@@ -68,6 +85,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8AC3DBE920D82B6F00644896 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		8AC63CC720185D7D001498E0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,6 +108,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A6F996E20D8288F00732686 /* libswiftAppKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftAppKit.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftAppKit.tbd; sourceTree = SDKROOT; };
+		8A9142C420D8049500AF98FA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dependencies.xcodeproj; path = Dependencies/Dependencies.xcodeproj; sourceTree = "<group>"; };
+		8AC3DBE020D82A3D00644896 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = SDKROOT; };
+		8AC3DBEB20D82B6F00644896 /* waifu2x */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = waifu2x; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AC3DBED20D82B6F00644896 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8AC63C232018462E001498E0 /* waifu2x_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = waifu2x_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC63C262018462E001498E0 /* waifu2x_mac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = waifu2x_mac.h; sourceTree = "<group>"; };
 		8AC63C272018462E001498E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,6 +165,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8AC3DBE820D82B6F00644896 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AC3DBF520D82D6600644896 /* CommandLineKit.framework in Frameworks */,
+				8AC3DBF220D82B8700644896 /* waifu2x_mac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AC63C1F2018462E001498E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +200,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AACE76B20D810DA0060240C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AACE77320D810DA0060240C /* CommandLineKit.framework */,
+				8AACE77520D810DA0060240C /* Dependencies.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AC3DBEC20D82B6F00644896 /* waifu2x-mac-cli */ = {
+			isa = PBXGroup;
+			children = (
+				8AC3DBED20D82B6F00644896 /* main.swift */,
+			);
+			path = "waifu2x-mac-cli";
+			sourceTree = "<group>";
+		};
 		8AC63C192018462E001498E0 = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +224,10 @@
 				8AC63C252018462E001498E0 /* waifu2x-mac */,
 				8AC63C302018462E001498E0 /* waifu2x-macTests */,
 				8AC63C562018466A001498E0 /* waifu2x-mac-app */,
+				8AC3DBEC20D82B6F00644896 /* waifu2x-mac-cli */,
 				8AC63C242018462E001498E0 /* Products */,
 				8AC63CC020185ACA001498E0 /* Frameworks */,
+				8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +237,7 @@
 				8AC63C232018462E001498E0 /* waifu2x_mac.framework */,
 				8AC63C2C2018462E001498E0 /* waifu2x-macTests.xctest */,
 				8AC63C552018466A001498E0 /* waifu2x-mac-app.app */,
+				8AC3DBEB20D82B6F00644896 /* waifu2x */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +258,7 @@
 				8AC63C86201848FC001498E0 /* NSImage+Bicubic.swift */,
 				8AC63C84201848FC001498E0 /* NSImage+Crop.swift */,
 				8AC63C8A201848FD001498E0 /* NSImage+Expand.swift */,
+				8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */,
 				8AC63C262018462E001498E0 /* waifu2x_mac.h */,
 				8AC63C272018462E001498E0 /* Info.plist */,
 				8AC63C652018477F001498E0 /* Waifu2x.swift */,
@@ -218,7 +280,6 @@
 			children = (
 				8AC63CCB201879BF001498E0 /* waifu2x-mac-app.entitlements */,
 				8AC63C572018466A001498E0 /* AppDelegate.swift */,
-				8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */,
 				8AC63C592018466A001498E0 /* ViewController.swift */,
 				8AC63C5B2018466A001498E0 /* Assets.xcassets */,
 				8AC63C5D2018466A001498E0 /* Main.storyboard */,
@@ -256,6 +317,9 @@
 		8AC63CC020185ACA001498E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AC3DBE020D82A3D00644896 /* libswiftCore.tbd */,
+				8A6F996E20D8288F00732686 /* libswiftAppKit.tbd */,
+				8A9142C420D8049500AF98FA /* AppKit.framework */,
 				8AC63CC120185ACB001498E0 /* MetalKit.framework */,
 			);
 			name = Frameworks;
@@ -275,6 +339,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8AC3DBEA20D82B6F00644896 /* waifu2x-mac-cli */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AC3DBEF20D82B6F00644896 /* Build configuration list for PBXNativeTarget "waifu2x-mac-cli" */;
+			buildPhases = (
+				8AC3DBE720D82B6F00644896 /* Sources */,
+				8AC3DBE820D82B6F00644896 /* Frameworks */,
+				8AC3DBE920D82B6F00644896 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "waifu2x-mac-cli";
+			productName = "waifu2x-mac-cli";
+			productReference = 8AC3DBEB20D82B6F00644896 /* waifu2x */;
+			productType = "com.apple.product-type.tool";
+		};
 		8AC63C222018462E001498E0 /* waifu2x-mac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AC63C372018462E001498E0 /* Build configuration list for PBXNativeTarget "waifu2x-mac" */;
@@ -336,10 +417,14 @@
 		8AC63C1A2018462E001498E0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "谢宜";
 				TargetAttributes = {
+					8AC3DBEA20D82B6F00644896 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					8AC63C222018462E001498E0 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -366,14 +451,38 @@
 			mainGroup = 8AC63C192018462E001498E0;
 			productRefGroup = 8AC63C242018462E001498E0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8AACE76B20D810DA0060240C /* Products */;
+					ProjectRef = 8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8AC63C222018462E001498E0 /* waifu2x-mac */,
 				8AC63C2B2018462E001498E0 /* waifu2x-macTests */,
 				8AC63C542018466A001498E0 /* waifu2x-mac-app */,
+				8AC3DBEA20D82B6F00644896 /* waifu2x-mac-cli */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8AACE77320D810DA0060240C /* CommandLineKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CommandLineKit.framework;
+			remoteRef = 8AACE77220D810DA0060240C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8AACE77520D810DA0060240C /* Dependencies.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dependencies.framework;
+			remoteRef = 8AACE77420D810DA0060240C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8AC63C212018462E001498E0 /* Resources */ = {
@@ -402,10 +511,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8AC3DBE720D82B6F00644896 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AC3DBEE20D82B6F00644896 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AC63C1E2018462E001498E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AACE77A20D821B20060240C /* NSImage+PNG.swift in Sources */,
 				8AC63C662018477F001498E0 /* Waifu2x.swift in Sources */,
 				8AC63C92201848FD001498E0 /* NSImage+Bicubic.swift in Sources */,
 				8AC63C98201848FD001498E0 /* MLModel+Prediction.swift in Sources */,
@@ -454,7 +572,6 @@
 			files = (
 				8AC63C5A2018466A001498E0 /* ViewController.swift in Sources */,
 				8AC63C582018466A001498E0 /* AppDelegate.swift in Sources */,
-				8AC63CCA201878FA001498E0 /* NSImage+PNG.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +602,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8AC3DBF020D82B6F00644896 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34A2STWT5M;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks";
+				PRODUCT_NAME = waifu2x;
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		8AC3DBF120D82B6F00644896 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 34A2STWT5M;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks";
+				PRODUCT_NAME = waifu2x;
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		8AC63C352018462E001498E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -600,6 +749,7 @@
 		8AC63C382018462E001498E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -613,7 +763,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "waifu2x-mac/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks @executable_path";
 				PRODUCT_BUNDLE_IDENTIFIER = "xieyi.waifu2x-mac";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -625,6 +775,7 @@
 		8AC63C392018462E001498E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -638,7 +789,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "waifu2x-mac/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks @executable_path";
 				PRODUCT_BUNDLE_IDENTIFIER = "xieyi.waifu2x-mac";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -715,6 +866,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8AC3DBEF20D82B6F00644896 /* Build configuration list for PBXNativeTarget "waifu2x-mac-cli" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AC3DBF020D82B6F00644896 /* Debug */,
+				8AC3DBF120D82B6F00644896 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8AC63C1D2018462E001498E0 /* Build configuration list for PBXProject "waifu2x-mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

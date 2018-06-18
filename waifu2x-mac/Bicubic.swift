@@ -2,7 +2,7 @@
 //  Bicubic.swift
 //  waifu2x
 //
-//  Created by 谢宜 on 2017/12/29.
+//  Created by xieyi on 2017/12/29.
 //  Copyright © 2017年 xieyi. All rights reserved.
 //
 //  Reference: https://blog.demofox.org/2015/08/15/resizing-images-with-bicubic-interpolation/
