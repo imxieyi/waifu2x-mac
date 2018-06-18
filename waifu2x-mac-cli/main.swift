@@ -23,9 +23,23 @@ let scaleFactor = IntOption(shortFlag: "s", longFlag: "scale", required: true, h
 let denoiseLevel = IntOption(shortFlag: "n", longFlag: "noise", required: true, helpMessage: "Denoise level (0-4)")
 let inputImage = StringOption(shortFlag: "i", longFlag: "input", required: true, helpMessage: "Input image file (any format as long as NSImage loads)")
 let outputImage = StringOption(shortFlag: "o", longFlag: "output", required: true, helpMessage: "Output image file (png)")
-let help = Option(shortFlag: "h", longFlag: "help", helpMessage: "Print usage")
+let help = BoolOption(shortFlag: "h", longFlag: "help", helpMessage: "Print usage")
 
-cli.addOptions(imageType, scaleFactor, denoiseLevel, inputImage, outputImage, help)
+cli.setOptions(help)
+
+do {
+    try cli.parse()
+} catch {
+    cli.printUsage(error)
+    exit(EX_USAGE)
+}
+
+cli.setOptions(imageType, scaleFactor, denoiseLevel, inputImage, outputImage, help)
+
+if help.value {
+    cli.printUsage()
+    exit(EX_USAGE)
+}
 
 do {
     try cli.parse()
