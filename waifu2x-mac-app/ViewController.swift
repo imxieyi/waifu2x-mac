@@ -99,7 +99,7 @@ class ViewController: NSViewController {
 class DragImageView: NSImageView {
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        let pboard = sender.draggingPasteboard()
+        let pboard = sender.draggingPasteboard
         if let types = pboard.types {
             if types.contains(NSPasteboard.PasteboardType.png) || types.contains(NSPasteboard.PasteboardType.tiff) {
                 let wrapper = pboard.readFileWrapper()
