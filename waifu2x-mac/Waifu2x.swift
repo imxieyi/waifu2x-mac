@@ -110,7 +110,14 @@ public struct Waifu2x {
                             outalpha = metalBicubic.resizeSingle(alpha, width, height, Float(out_scale))
                         }
                     }
-                    if outalpha != nil {
+                    var emptyAlpha = true
+                    for item in outalpha ?? [] {
+                        if item > 0 {
+                            emptyAlpha = false
+                            break
+                        }
+                    }
+                    if outalpha != nil && !emptyAlpha {
                         alpha = outalpha!
                     } else {
                         // Fallback to CPU scale
