@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BA270B1219CFC760031CA9A /* CommandLineKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AACE77320D810DA0060240C /* CommandLineKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5BA270B5219CFC890031CA9A /* waifu2x in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AC3DBEB20D82B6F00644896 /* waifu2x */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8AACE77A20D821B20060240C /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */; };
 		8AC3DBEE20D82B6F00644896 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3DBED20D82B6F00644896 /* main.swift */; };
 		8AC3DBF220D82B8700644896 /* waifu2x_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; };
@@ -85,6 +87,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5BA270B4219CFC800031CA9A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				5BA270B5219CFC890031CA9A /* waifu2x in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AC3DBE920D82B6F00644896 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -100,6 +112,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5BA270B1219CFC760031CA9A /* CommandLineKit.framework in Embed Frameworks */,
 				8AC63CC420185D7D001498E0 /* waifu2x_mac.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -400,6 +413,7 @@
 				8AC63C522018466A001498E0 /* Frameworks */,
 				8AC63C532018466A001498E0 /* Resources */,
 				8AC63CC720185D7D001498E0 /* Embed Frameworks */,
+				5BA270B4219CFC800031CA9A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -611,8 +625,9 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34A2STWT5M;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = waifu2x;
+				SKIP_INSTALL = YES;
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 4.0;
@@ -627,8 +642,9 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 34A2STWT5M;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path @executable_path/waifu2x_mac.framework/Versions/A/Frameworks @executable_path/../Frameworks";
 				PRODUCT_NAME = waifu2x;
+				SKIP_INSTALL = YES;
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_VERSION = 4.0;
