@@ -25,8 +25,8 @@ then
     echo -e "${WARNING} The ${PWD##*/} directory will be cleaned of all" \
       "untracked files.${RESET}"
     echo "${UNTRACKED}" # list of files to delete
-    read -n 1 -r -p "${BOLD}${LINE}Are you sure?${LOFF} (y/n) ${RESET}" CONFIRM
-    case ${CONFIRM} in
+    read -n 1 -r -p "${BOLD}${LINE}Are you sure?${LOFF} (y/n) ${RESET}" YN
+    case ${YN} in
       [Yy]* )
         echo >&2
         git clean -dffx # delete ALL untracked files and folders
@@ -85,11 +85,19 @@ then
       XCODEMAS=$(mas search Xcode | \
         sed -E "s/^ +([0-9]+) +Xcode +\(.+\)$/\1/" | grep -E "^[0-9]+$")
       XCODESIZE=$(mas info $XCODEMAS | grep "Size:")
-      if [[ ${ATTEMPT} -eq 1 ]]
-      then
-        echo "${WARNING} Downloading Xcode. (${XCODESIZE})${RESET}"
-      fi
-      mas install ${XCODEMAS}
+      echo "${WARNING} Downloading Xcode. (${XCODESIZE})${RESET}"
+      read -n 1 -r -p "${BOLD}${LINE}Are you sure?${LOFF} (y/n) ${RESET}" YN
+      case ${YN} in
+        [Yy]* )
+          echo >&2
+          mas install ${XCODEMAS} # installs Xcode
+          ;;
+        * ) # anything but Y cancels the operation
+          echo >&2
+          echo "${ERROR} Xcode installation cancelled.${RESET}" >&2
+          exit 1
+          ;;
+      esac
       continue # recheck if Xcode installed
     fi
   done
