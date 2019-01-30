@@ -18,8 +18,10 @@ cd $(cd -P -- "$(dirname -- "$0")" && pwd -P)
 # Check if the script is in the same directory as the Xcode project
 if [[ $(find . -name 'waifu2x-mac.xcodeproj' -d -maxdepth 1) ]]
 then
+  # Reset sudo timestamp (to avoid automatic sudoing in the script)
+  sudo -K
   # Clean the base directory of previous build attempts
-  UNTRACKED=$(git clean -dffnx) # dry run
+  UNTRACKED=$(git clean -dffnx 2> /dev/null) # dry run
   if [[ ${UNTRACKED} ]]
   then
     echo -e "${WARNING} The ${PWD##*/} directory will be cleaned of all" \
@@ -58,11 +60,8 @@ then
     XCODEAPP=$(find /Applications -name 'Xcode*.app' -d -maxdepth 1 | head -n1)
     if [[ ${XCODEAPP} ]] # Xcode installed but not selected
     then # try to select Xcode
-      if [[ ${ATTEMPT} -eq 1 ]]
-      then
-        echo "${WARNING} Selecting Xcode for command line tools (requires" \
+      echo "${WARNING} Selecting Xcode for command line tools (requires" \
         "admin privileges).${RESET}"
-      fi
       # Set Xcode.app as the active developer directory
       sudo xcrun xcode-select -s ${XCODEAPP}/Contents/Developer 2> /dev/null
       sudo xcrun xcodebuild -license accept 2> /dev/null
@@ -72,10 +71,7 @@ then
       then
         if ! [[ $(type brew 2> /dev/null) ]] # check for Homebrew pkg manager
         then
-          if [[ ${ATTEMPT} -eq 1 ]]
-          then
-            echo "${WARNING} Installing Homebrew.${RESET}"
-          fi
+          echo "${WARNING} Installing Homebrew.${RESET}"
           /usr/bin/ruby -e "$(curl -fsSL \
           https://raw.githubusercontent.com/Homebrew/install/master/install)"
         fi
@@ -124,7 +120,7 @@ then
       "privileges).${RESET}"
     echo "${BOLD}You can read the license at" \
       "${LINE}https://www.apple.com/legal/sla/docs/xcode.pdf${LOFF}${RESET}"
-    sudo sudo xcrun xcodebuild -license accept
+    sudo xcrun xcodebuild -license accept
   fi
 
   # Configuring dependencies for command-line program
@@ -141,11 +137,21 @@ then
   EXITCODE=$?
   if [[ ${EXITCODE} -eq '0' ]] # success
   then # move the build to a more convenient directory
-    mv ./DerivedData/Build/Products/Release ./build
+    mkdir build
+    mv ./DerivedData/Build/Products/Release/waifu2x-mac-app.app \
+      ./build/waifu2x-mac-app.app
     rm -r ./DerivedData
-    echo "${INFO} Build success.${RESET}"
-    ls -d -n1 build/* # show where the build is
-    exit 0
+    BUILT=$(find build -name 'waifu2x-mac-app.app' -d -maxdepth 1)
+    if [[ ${BUILT} ]]
+    then
+      echo "${INFO} Build success.${RESET}"
+      echo "${BUILT}" # show where the built macOS app is
+      exit 0
+    else
+      echo "${ERROR} Build failed.${RESET}" >&2
+      git clean -dffx >&2 # delete ALL untracked files and folders
+      exit 1
+    fi
   else
     echo "${ERROR} Build failed.${RESET}" >&2
     git clean -dffx >&2 # delete ALL untracked files and folders

@@ -7,28 +7,39 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 ## Requirements
  - macOS 10.13+
  - XCode 9.0+
- 
-## Install Dependencies for CLI Version
-```bash
-cd Dependencies
-swift package update
-rake xcodeproj
-```
 
 ## Compilation Instructions
-1) Install dependencies for CLI Version as instructed above
+### Option A (automatic):
+1) Open the Terminal (⌘+Space, "terminal")
+2) Drag `build.sh` from Finder to the Terminal window, and press Return to start building the app.  
+   All missing dependencies (including Xcode) will be installed automatically by the script if needed.
+3) Once the build has completed, the `waifu2x-mac-app` application can be found in the `build` folder.
+### Option B (manual):
+1) Install dependencies for command-line version:
+   ```bash
+   sudo gem install xcodeproj
+   cd Dependencies
+   swift package update
+   rake xcodeproj
+   ```
 2) Build using `waifu2x-mac-app` scheme 
 3) To locate the built macOS app, expand the Products folder on Project Navigator (left pane) and right click on `waifu2x-mac-app.app` to select **Show in Finder**
-4) This app can be dragged to any location you choose, such as `/Applications`
-5) If you would like to use the CLI version of `waifu2x-mac-app`, right click on the app and select `Show Package Contents`. Navigate to `Contents/MacOS`. The CLI version is `waifu2x`.
-6) Run `waifu2x` by navigating in a terminal to `waifu2x-mac-app.app/Contents/MacOS/` but if you would like to run the program anywhere, type in `ln -s /path/to/waifu2x /usr/local/bin/waifu2x`. You can also drag the `waifu2x` executable after `ln -s` to get the file path in terminal automatically.
-    - For example, if waifu2x-mac-app is in `/Applications`, you would run the following command to create an symbolic link: 
-       
-       `ln -s /Applications/waifu2x-mac-app.app/Contents/MacOS/waifu2x /usr/local/bin/waifu2x` 
-7) You can not drag the CLI executable out and use it directly as it will not work. You must create a symbolic link as shown above if you want to use it without going into the `waifu2x-mac-app.app` directory. Additionally the symbollic link will break if you move the macOS app. You can delete the old symbolic link in `/usr/local/bin` and run the `ln -s` command to create a new symbolic link.
 
+## Installing the App and CLI Version
 
-## CLI Version Usage
+The app can be dragged to any location you choose, such as `/Applications`.
+
+If you would like to use the CLI version, right click on the app and select **Show Package Contents**. Navigate to `Contents/MacOS`. The CLI version is `waifu2x`.
+
+If you would like to run the program anywhere, you must create a symbolic link by typing `ln -s /path/to/waifu2x /usr/local/bin/waifu2x` in a terminal. You can also drag the waifu2x executable after `ln -s ` to get the file path in terminal automatically.
+
+> For example, if waifu2x-mac-app is in `/Applications`, you would run the following command to create a symlink:  
+`ln -s /Applications/waifu2x-mac-app.app/Contents/MacOS/waifu2x /usr/local/bin/waifu2x`
+
+**N.B.:** You can not drag the CLI executable out and use it directly as it will not work. You must create a symbolic link as shown above if you want to use it without going into the `waifu2x-mac-app.app` directory.  
+Additionally the symbolic link will break if you move the macOS app. You can delete the old symlink with `unlink /usr/local/bin/waifu2x` and run `ln -s` again to create a new one.
+
+## Command-Line Usage
 ```
 Usage: waifu2x [options]
     -t, --type:
@@ -44,4 +55,4 @@ Usage: waifu2x [options]
     -h, --help:
         Print usage
 ```
-**WARNING:** This CLI version is not a self-contained executable. `waifu2x` must be in `waifu2x-mac-app.app/Contents/MacOS/` with `CommandLineKit.framework` and `waifu2x_mac.framework` in `waifu2x-mac-app.app/Contents/Frameworks` or `CommandLineKit.framework` and `waifu2x_mac.framework` must be in the same directory as `waifu2x` executable in order to run. 
+**WARNING:** The CLI version is not a self-contained executable. `waifu2x` must remain in the same directory as `CommandLineKit.framework` and `waifu2x_mac.framework`.
