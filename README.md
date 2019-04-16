@@ -5,8 +5,8 @@ Waifu2x porting to macos, still in CoreML and Metal. For other details please re
 I haven't published this app to the Mac App Store. Any app appears on the store has nothing to do with me.
 
 ## Requirements
- - macOS 10.13+
- - XCode 9.0+
+ - macOS 10.13+ (Running)
+ - Xcode 10.2+ (Building)
 
 ## Compilation Instructions
 ### Option A (automatic):
@@ -14,6 +14,7 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 2) Drag `build.sh` from Finder to the Terminal window, and press Return to start building the app.  
    All missing dependencies (including Xcode) will be installed automatically by the script if needed.
 3) Once the build has completed, the `waifu2x-mac-app` application can be found in the `build` folder.
+
 ### Option B (manual):
 1) Install dependencies for command-line version:
    ```bash
@@ -26,7 +27,6 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 3) To locate the built macOS app, expand the Products folder on Project Navigator (left pane) and right click on `waifu2x-mac-app.app` to select **Show in Finder**
 
 ## Installing the App and CLI Version
-
 The app can be dragged to any location you choose, such as `/Applications`.
 
 If you would like to use the CLI version, right click on the app and select **Show Package Contents**. Navigate to `Contents/MacOS`. The CLI version is `waifu2x`.

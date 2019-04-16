@@ -14,7 +14,7 @@ public struct Waifu2x {
     /// The output block size.
     /// It is dependent on the model.
     /// Do not modify it until you are sure your model has a different number.
-    static var block_size = 128
+    static var block_size = 128 
     
     /// The difference between output and input block size
     static let shrink_size = 7

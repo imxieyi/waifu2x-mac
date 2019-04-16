@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
@@ -8,8 +8,8 @@ let package = Package(
         .library(name: "Dependencies", type: .dynamic, targets: ["Dependencies"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/jatoben/CommandLine.git", from: "3.0.0-pre1"),
+        .package(url: "https://github.com/benoit-pereira-da-silva/CommandLine", from: "4.0.9"),
     ],    targets: [
-        .target(name: "Dependencies", dependencies: ["CommandLine"], path: "." )
+        .target(name: "Dependencies", dependencies: ["CommandLineKit"], path: "." )
     ]
 )

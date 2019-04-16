@@ -17,6 +17,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var processBtn: NSButton!
     @IBOutlet weak var saveBtn: NSButton!
     @IBOutlet weak var status: NSTextField!
+    @IBOutlet weak var spinner: NSProgressIndicator!
     
     static var instance: ViewController!
     
@@ -61,6 +62,9 @@ class ViewController: NSViewController {
         pickBtn.isEnabled = false
         processBtn.isEnabled = false
         saveBtn.isEnabled = false
+        spinner.startAnimation(self)
+        status.isHidden = true
+        
         let start = DispatchTime.now().uptimeNanoseconds
         background.async {
             guard let outImage = Waifu2x.run(img, model: Model.anime_noise2_scale2x) else {
@@ -72,8 +76,10 @@ class ViewController: NSViewController {
                 self.pickBtn.isEnabled = true
                 self.processBtn.isEnabled = true
                 self.saveBtn.isEnabled = true
+                self.spinner.stopAnimation(self)
+                self.status.isHidden = false
                 let end = DispatchTime.now().uptimeNanoseconds
-                self.status.stringValue = "Time elapsed: \(Float(end - start) / 1_000_000_000)"
+                self.status.stringValue = "Time elapsed: \(Float(end - start) / 1_000_000_000)s"
             }
         }
     }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,7 +620,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -684,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="waifu2x" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1280" height="720"/>
@@ -733,7 +734,7 @@
                                     <action selector="processImage:" target="XfG-lQ-9wD" id="dFI-QD-twE"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FLe-LW-Gg9">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FLe-LW-Gg9">
                                 <rect key="frame" x="4" y="6" width="1272" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="cix-c9-uQE"/>
@@ -758,14 +759,19 @@
                                 <rect key="frame" x="640" y="53" width="637" height="664"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="ebr-dh-UAa"/>
                             </imageView>
+                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="evC-3b-jGL">
+                                <rect key="frame" x="951" y="377" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ves-oJ-zWd" firstAttribute="top" secondItem="3ve-eT-YHn" secondAttribute="bottom" constant="6" id="0tA-U9-p8m"/>
+                            <constraint firstItem="evC-3b-jGL" firstAttribute="centerY" secondItem="3ve-eT-YHn" secondAttribute="centerY" id="1YO-gO-Py2"/>
                             <constraint firstItem="Pj9-5a-kbo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6i-71-8CX" secondAttribute="trailing" constant="12" symbolic="YES" id="2ke-WB-9Wg"/>
                             <constraint firstItem="r4u-Wb-jsD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="6" id="CEE-D8-lSA"/>
                             <constraint firstAttribute="trailing" secondItem="Pj9-5a-kbo" secondAttribute="trailing" constant="523" id="Dag-a8-H1t"/>
                             <constraint firstItem="Pj9-5a-kbo" firstAttribute="bottom" secondItem="Ves-oJ-zWd" secondAttribute="bottom" id="EzL-9r-3Rp"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="leading" secondItem="r4u-Wb-jsD" secondAttribute="trailing" constant="6" id="HOy-91-rDs"/>
+                            <constraint firstItem="evC-3b-jGL" firstAttribute="centerX" secondItem="3ve-eT-YHn" secondAttribute="centerX" id="HjT-cN-e2d"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="leading" secondItem="r4u-Wb-jsD" secondAttribute="trailing" constant="6" id="I4V-yU-er5"/>
                             <constraint firstItem="O6i-71-8CX" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="P7k-DK-SAI"/>
                             <constraint firstAttribute="trailing" secondItem="FLe-LW-Gg9" secondAttribute="trailing" constant="6" id="Pp3-pX-Li8"/>
@@ -788,6 +794,7 @@
                         <outlet property="pickBtn" destination="Ves-oJ-zWd" id="OSy-4z-AF9"/>
                         <outlet property="processBtn" destination="O6i-71-8CX" id="7S2-RY-7R8"/>
                         <outlet property="saveBtn" destination="Pj9-5a-kbo" id="YHR-Ve-fa6"/>
+                        <outlet property="spinner" destination="evC-3b-jGL" id="Qcs-hZ-wXE"/>
                         <outlet property="status" destination="FLe-LW-Gg9" id="de3-z7-Cml"/>
                     </connections>
                 </viewController>
