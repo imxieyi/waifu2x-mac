@@ -1,3 +1,6 @@
 os: osx
 osx_image: xcode10.2
-script: "./build.sh"
+language: objective-c
+xcode_project: waifu2x-mac.xcodeproj # path to your xcodeproj folder
+xcode_scheme: waifu2x-macTests
+xcode_destination: platform=macOS

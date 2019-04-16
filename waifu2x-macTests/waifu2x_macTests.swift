@@ -7,29 +7,30 @@
 //
 
 import XCTest
+import Cocoa
 @testable import waifu2x_mac
 
 class waifu2x_macTests: XCTestCase {
     
+    private var image: NSImage!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let bundle = Bundle(for: type(of: self))
+        let path = bundle.path(forResource: "white", ofType: "png")!
+        let data = NSData(contentsOfFile: path)
+        image = NSImage(data: data! as Data)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        image = nil
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testAllModels() {
+        for model in Model.all {
+            print(model)
+            assert(Waifu2x.run(image, model: model) != nil)
         }
     }
     
