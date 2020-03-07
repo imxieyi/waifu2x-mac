@@ -19,13 +19,19 @@ extension NSImage {
         let width = Int(self.representations[0].pixelsWide)
         let height = Int(self.representations[0].pixelsHigh)
         var rect = NSRect.init(origin: .zero, size: CGSize(width: width, height: height))
+        
+        // Redraw image in 32-bit RGBA
+        let data = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height * 4)
+        data.initialize(repeating: 0, count: width * height * 4)
+        defer {
+            data.deallocate()
+        }
+        let context = CGContext(data: data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.noneSkipLast.rawValue)
         let cgimg = self.representations[0].cgImage(forProposedRect: &rect, context: nil, hints: nil)
+        context?.draw(cgimg!, in: rect)
         
         let exwidth = width + 2 * Waifu2x.shrink_size
         let exheight = height + 2 * Waifu2x.shrink_size
-        
-        let pixels = cgimg?.dataProvider?.data
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixels!)
         
         var arr = [Float](repeating: 0, count: 3 * exwidth * exheight)
         

@@ -41,8 +41,7 @@ public struct Waifu2x {
         Waifu2x.interrupt = false
         let width = Int(image.representations[0].pixelsWide)
         let height = Int(image.representations[0].pixelsHigh)
-        var rect = NSRect.init(origin: .zero, size: CGSize(width: width, height: height))
-        let cgimg = image.representations[0].cgImage(forProposedRect: &rect, context: nil, hints: nil)
+        let cgimg = image.representations[0].cgImage(forProposedRect: nil, context: nil, hints: nil)
         var hasalpha = cgimg?.alphaInfo != CGImageAlphaInfo.none
         debugPrint("With Alpha: \(hasalpha)")
         var channels = 3
@@ -96,9 +95,11 @@ public struct Waifu2x {
             return output
         }
         let bufferSize = out_block_size * out_block_size * 3
-        var imgData: [UInt8]
+        let imgData = UnsafeMutablePointer<UInt8>.allocate(capacity: out_width * out_height * channels)
+        defer {
+            imgData.deallocate()
+        }
         // Alpha channel support
-        imgData = [UInt8](repeating: 0, count: out_width * out_height * channels)
         var alpha_task: BackgroundTask? = nil
         if hasalpha {
             alpha_task = BackgroundTask("alpha") {
@@ -199,7 +200,7 @@ public struct Waifu2x {
             return nil
         }
         callback("generate_output")
-        let cfbuffer = CFDataCreate(nil, &imgData, out_width * out_height * channels)!
+        let cfbuffer = CFDataCreate(nil, imgData, out_width * out_height * channels)!
         let dataProvider = CGDataProvider(data: cfbuffer)!
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         var bitmapInfo = CGBitmapInfo.byteOrder32Big.rawValue
