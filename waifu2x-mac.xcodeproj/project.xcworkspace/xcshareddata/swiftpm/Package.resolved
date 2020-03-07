@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CommandLineKit",
+        "repositoryURL": "https://github.com/benoit-pereira-da-silva/CommandLine",
+        "state": {
+          "branch": "master",
+          "revision": "c887aeba47b4cc4b9c8ef3656d42f9180bb45447",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

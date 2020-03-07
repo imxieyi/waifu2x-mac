@@ -98,21 +98,6 @@ then
     fi
   done
 
-  # Check for required Ruby gem and install it if missing
-  if ! [[ $(gem list --local xcodeproj | grep xcodeproj) ]]
-  then
-    echo "${WARNING} Installing missing gem \"xcodeproj\" (requires admin" \
-      "privileges).${RESET}"
-    sudo gem install xcodeproj
-    if ! [[ $(gem list --local xcodeproj | grep xcodeproj) ]]
-    then # still missing
-      echo "${ERROR} Ruby gem \"xcodeproj\" still not found.${RESET}" >&2
-      echo "${BOLD}If Ruby is installed, try the command:${RESET}" \
-        "sudo gem install xcodeproj" >&2
-      exit 1 # xcodeproj is required to build CLI version
-    fi
-  fi
-
   # Agreeing to the Xcode license
   if [[ $(xcodebuild -help 2>&1 | grep "Agreeing") ]]
   then
@@ -122,13 +107,6 @@ then
       "${LINE}https://www.apple.com/legal/sla/docs/xcode.pdf${LOFF}${RESET}"
     sudo xcrun xcodebuild -license accept
   fi
-
-  # Configuring dependencies for command-line program
-  echo "${BOLD}${LINE}Configuring...${RESET}"
-  cd Dependencies
-  swift package update
-  rake xcodeproj
-  cd ..
 
   # Building with Xcode
   echo "${BOLD}${LINE}Building...${RESET}"
@@ -140,7 +118,7 @@ then
     mkdir build
     mv ./DerivedData/Build/Products/Release/waifu2x-mac-app.app \
       ./build/waifu2x-mac-app.app
-    rm -r ./DerivedData
+    rm -rf ./DerivedData
     BUILT=$(find build -name 'waifu2x-mac-app.app' -d -maxdepth 1)
     if [[ ${BUILT} ]]
     then

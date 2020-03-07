@@ -1,13 +1,6 @@
 os: osx
 osx_image: xcode10.2
 
-install:
-  - sudo gem install xcodeproj
-  - cd Dependencies
-  - swift package update
-  - rake xcodeproj
-  - cd ..
-
 language: objective-c
 xcode_project: waifu2x-mac.xcodeproj # path to your xcodeproj folder
 xcode_scheme: waifu2x-macTests

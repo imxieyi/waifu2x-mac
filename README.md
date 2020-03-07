@@ -18,15 +18,8 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 3) Once the build has completed, the `waifu2x-mac-app` application can be found in the `build` folder.
 
 ### Option B (manual):
-1) Install dependencies for command-line version:
-   ```bash
-   sudo gem install xcodeproj
-   cd Dependencies
-   swift package update
-   rake xcodeproj
-   ```
-2) Build using `waifu2x-mac-app` scheme 
-3) To locate the built macOS app, expand the Products folder on Project Navigator (left pane) and right click on `waifu2x-mac-app.app` to select **Show in Finder**
+1) Build using `waifu2x-mac-app` scheme 
+2) To locate the built macOS app, expand the Products folder on Project Navigator (left pane) and right click on `waifu2x-mac-app.app` to select **Show in Finder**
 
 ## Installing the App and CLI Version
 The app can be dragged to any location you choose, such as `/Applications`.
