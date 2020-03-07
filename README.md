@@ -9,6 +9,13 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 ## Requirements
  - macOS 10.13+ (Running)
  - Xcode 11.1+ (Building)
+ 
+## Homebrew (Experimental)
+If you want to install with homebrew (CLI only):
+```bash
+brew install imxieyi/waifu2x/waifu2x
+```
+**It downloads pre-built binary from [releases](https://github.com/imxieyi/waifu2x-mac/releases). Xcode is not needed.**
 
 ## Compilation Instructions
 ### Option A (automatic):
