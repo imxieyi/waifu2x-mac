@@ -11,6 +11,7 @@
 		5BA270B5219CFC890031CA9A /* waifu2x in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AC3DBEB20D82B6F00644896 /* waifu2x */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8A9919992265958A0094BCCF /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9919942265958A0094BCCF /* white.png */; };
 		8AACE77A20D821B20060240C /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */; };
+		8AB3FE6A2413FD51006BF451 /* CGImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB3FE692413FD51006BF451 /* CGImage+Crop.swift */; };
 		8AC3DBEE20D82B6F00644896 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC3DBED20D82B6F00644896 /* main.swift */; };
 		8AC3DBF220D82B8700644896 /* waifu2x_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC63C232018462E001498E0 /* waifu2x_mac.framework */; };
 		8AC3DBF520D82D6600644896 /* CommandLineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AACE77320D810DA0060240C /* CommandLineKit.framework */; };
@@ -31,7 +32,7 @@
 		8AC63C93201848FD001498E0 /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C87201848FC001498E0 /* BackgroundTask.swift */; };
 		8AC63C94201848FD001498E0 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C88201848FC001498E0 /* Queue.swift */; };
 		8AC63C95201848FD001498E0 /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C89201848FC001498E0 /* ModelFactory.swift */; };
-		8AC63C96201848FD001498E0 /* NSImage+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C8A201848FD001498E0 /* NSImage+Expand.swift */; };
+		8AC63C96201848FD001498E0 /* CGImage+Expand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C8A201848FD001498E0 /* CGImage+Expand.swift */; };
 		8AC63C97201848FD001498E0 /* Bicubic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C8B201848FD001498E0 /* Bicubic.swift */; };
 		8AC63C98201848FD001498E0 /* MLModel+Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C8C201848FD001498E0 /* MLModel+Prediction.swift */; };
 		8AC63CAE20184902001498E0 /* photo_noise0_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63C9B20184902001498E0 /* photo_noise0_model.mlmodel */; };
@@ -133,6 +134,7 @@
 		8A9142C420D8049500AF98FA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		8A9919942265958A0094BCCF /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		8AACE76A20D810DA0060240C /* Dependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dependencies.xcodeproj; path = Dependencies/Dependencies.xcodeproj; sourceTree = "<group>"; };
+		8AB3FE692413FD51006BF451 /* CGImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Crop.swift"; sourceTree = "<group>"; };
 		8AC3DBE020D82A3D00644896 /* libswiftCore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftCore.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftCore.tbd; sourceTree = SDKROOT; };
 		8AC3DBEB20D82B6F00644896 /* waifu2x */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = waifu2x; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC3DBED20D82B6F00644896 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 		8AC63C87201848FC001498E0 /* BackgroundTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
 		8AC63C88201848FC001498E0 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		8AC63C89201848FC001498E0 /* ModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
-		8AC63C8A201848FD001498E0 /* NSImage+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Expand.swift"; sourceTree = "<group>"; };
+		8AC63C8A201848FD001498E0 /* CGImage+Expand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImage+Expand.swift"; sourceTree = "<group>"; };
 		8AC63C8B201848FD001498E0 /* Bicubic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bicubic.swift; sourceTree = "<group>"; };
 		8AC63C8C201848FD001498E0 /* MLModel+Prediction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLModel+Prediction.swift"; sourceTree = "<group>"; };
 		8AC63C9B20184902001498E0 /* photo_noise0_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = photo_noise0_model.mlmodel; sourceTree = "<group>"; };
@@ -276,10 +278,11 @@
 				8AC63C8C201848FD001498E0 /* MLModel+Prediction.swift */,
 				8AC63C89201848FC001498E0 /* ModelFactory.swift */,
 				8AC63C88201848FC001498E0 /* Queue.swift */,
+				8AB3FE692413FD51006BF451 /* CGImage+Crop.swift */,
 				8AC63C82201848FC001498E0 /* NSImage+Alpha.swift */,
 				8AC63C86201848FC001498E0 /* NSImage+Bicubic.swift */,
 				8AC63C84201848FC001498E0 /* NSImage+Crop.swift */,
-				8AC63C8A201848FD001498E0 /* NSImage+Expand.swift */,
+				8AC63C8A201848FD001498E0 /* CGImage+Expand.swift */,
 				8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */,
 				8AC63C262018462E001498E0 /* waifu2x_mac.h */,
 				8AC63C272018462E001498E0 /* Info.plist */,
@@ -567,6 +570,7 @@
 				8AC63C97201848FD001498E0 /* Bicubic.swift in Sources */,
 				8AC63C91201848FD001498E0 /* MetalBicubic.swift in Sources */,
 				8AC63CBE20184902001498E0 /* up_photo_noise2_scale2x_model.mlmodel in Sources */,
+				8AB3FE6A2413FD51006BF451 /* CGImage+Crop.swift in Sources */,
 				8AC63CBB20184902001498E0 /* photo_noise2_model.mlmodel in Sources */,
 				8AC63CB620184902001498E0 /* up_photo_noise3_scale2x_model.mlmodel in Sources */,
 				8AC63CBC20184902001498E0 /* up_anime_noise1_scale2x_model.mlmodel in Sources */,
@@ -580,7 +584,7 @@
 				8AC63C94201848FD001498E0 /* Queue.swift in Sources */,
 				8AC63C8D201848FD001498E0 /* bicubic.metal in Sources */,
 				8AC63CBF20184902001498E0 /* anime_noise3_model.mlmodel in Sources */,
-				8AC63C96201848FD001498E0 /* NSImage+Expand.swift in Sources */,
+				8AC63C96201848FD001498E0 /* CGImage+Expand.swift in Sources */,
 				8AC63CBD20184902001498E0 /* photo_noise1_model.mlmodel in Sources */,
 				8AC63CAE20184902001498E0 /* photo_noise0_model.mlmodel in Sources */,
 			);

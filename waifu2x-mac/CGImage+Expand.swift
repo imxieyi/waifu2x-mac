@@ -8,16 +8,13 @@
 
 import CoreML
 
-extension NSImage {
+extension CGImage {
     
     /// Expand the original image by shrink_size and store rgb in float array.
     /// The model will shrink the input image by 7 px.
     ///
     /// - Returns: Float array of rgb values
     public func expand(withAlpha: Bool) -> [Float] {
-        
-        let width = Int(self.representations[0].pixelsWide)
-        let height = Int(self.representations[0].pixelsHigh)
         var rect = NSRect.init(origin: .zero, size: CGSize(width: width, height: height))
         
         // Redraw image in 32-bit RGBA
@@ -27,8 +24,7 @@ extension NSImage {
             data.deallocate()
         }
         let context = CGContext(data: data, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGBitmapInfo.byteOrder32Big.rawValue | CGImageAlphaInfo.noneSkipLast.rawValue)
-        let cgimg = self.representations[0].cgImage(forProposedRect: &rect, context: nil, hints: nil)
-        context?.draw(cgimg!, in: rect)
+        context?.draw(self, in: rect)
         
         let exwidth = width + 2 * Waifu2x.shrink_size
         let exheight = height + 2 * Waifu2x.shrink_size

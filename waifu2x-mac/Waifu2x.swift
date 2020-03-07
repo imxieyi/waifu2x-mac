@@ -39,10 +39,52 @@ public struct Waifu2x {
             return image
         }
         Waifu2x.interrupt = false
+        var out_scale: Int
+        switch model! {
+        case .anime_noise0, .anime_noise1, .anime_noise2, .anime_noise3, .photo_noise0, .photo_noise1, .photo_noise2, .photo_noise3:
+            Waifu2x.block_size = 128
+            out_scale = 1
+        default:
+            Waifu2x.block_size = 142
+            out_scale = 2
+        }
         let width = Int(image.representations[0].pixelsWide)
         let height = Int(image.representations[0].pixelsHigh)
-        let cgimg = image.representations[0].cgImage(forProposedRect: nil, context: nil, hints: nil)
-        var hasalpha = cgimg?.alphaInfo != CGImageAlphaInfo.none
+        var fullWidth = width
+        var fullHeight = height
+        guard var cgimg = image.representations[0].cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+            print("Failed to get CGImage")
+            return nil
+        }
+        var fullCG = cgimg
+        
+        // If image is too small, expand it
+        if width < block_size || height < block_size {
+            if width < block_size {
+                fullWidth = block_size
+            }
+            if height < block_size {
+                fullHeight = block_size
+            }
+            var bitmapInfo = cgimg.bitmapInfo.rawValue
+            if bitmapInfo & CGBitmapInfo.alphaInfoMask.rawValue == CGImageAlphaInfo.first.rawValue {
+                bitmapInfo = bitmapInfo & ~CGBitmapInfo.alphaInfoMask.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue
+            } else if bitmapInfo & CGBitmapInfo.alphaInfoMask.rawValue == CGImageAlphaInfo.last.rawValue {
+                bitmapInfo = bitmapInfo & ~CGBitmapInfo.alphaInfoMask.rawValue | CGImageAlphaInfo.premultipliedLast.rawValue
+            }
+            let context = CGContext(data: nil, width: fullWidth, height: fullHeight, bitsPerComponent: cgimg.bitsPerComponent, bytesPerRow: cgimg.bytesPerRow / width * fullWidth, space: cgimg.colorSpace ?? CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo)
+            var y = fullHeight - height
+            if y < 0 {
+                y = 0
+            }
+            context?.draw(cgimg, in: CGRect(x: 0, y: y, width: width, height: height))
+            guard let contextCG = context?.makeImage() else {
+                return nil
+            }
+            fullCG = contextCG
+        }
+        
+        var hasalpha = cgimg.alphaInfo != CGImageAlphaInfo.none
         debugPrint("With Alpha: \(hasalpha)")
         var channels = 3
         var alpha: [UInt8]! = nil
@@ -63,25 +105,12 @@ public struct Waifu2x {
             }
         }
         debugPrint("Really With Alpha: \(hasalpha)")
-        var out_width: Int
-        var out_height: Int
-        var out_block_size: Int
-        var out_scale: Int
-        switch model! {
-        case .anime_noise0, .anime_noise1, .anime_noise2, .anime_noise3, .photo_noise0, .photo_noise1, .photo_noise2, .photo_noise3:
-            Waifu2x.block_size = 128
-            out_width = width
-            out_height = height
-            out_block_size = Waifu2x.block_size
-            out_scale = 1
-        default:
-            Waifu2x.block_size = 142
-            out_width = width * 2
-            out_height = height * 2
-            out_block_size = Waifu2x.block_size * 2
-            out_scale = 2
-        }
-        let rects = image.getCropRects()
+        let out_width = width * 2
+        let out_height = height * 2
+        let out_fullWidth = fullWidth * 2
+        let out_fullHeight = fullHeight * 2
+        let out_block_size = Waifu2x.block_size * 2
+        let rects = fullCG.getCropRects()
         // Prepare for output pipeline
         // Merge arrays into one array
         let normalize = { (input: Double) -> Double in
@@ -149,6 +178,9 @@ public struct Waifu2x {
                     for src_x in 0..<out_block_size {
                         dest_x = origin_x + src_x
                         dest_y = origin_y + src_y
+                        if dest_x >= out_fullWidth || dest_y >= out_fullHeight {
+                            continue
+                        }
                         src_index = src_y * out_block_size + src_x + out_block_size * out_block_size * channel
                         dest_index = (dest_y * out_width + dest_x) * channels + channel
                         imgData[dest_index] = UInt8(normalize(dataPointer[src_index]))
@@ -164,9 +196,9 @@ public struct Waifu2x {
             callback("\((index * 100) / rects.count)")
         }
         // Start running model
-        let expwidth = width + 2 * Waifu2x.shrink_size
-        let expheight = height + 2 * Waifu2x.shrink_size
-        var expanded = image.expand(withAlpha: hasalpha)
+        let expwidth = fullWidth + 2 * Waifu2x.shrink_size
+        let expheight = fullHeight + 2 * Waifu2x.shrink_size
+        let expanded = fullCG.expand(withAlpha: hasalpha)
         callback("processing")
         Waifu2x.in_pipeline = BackgroundPipeline<CGRect>("in_pipeline", count: rects.count, task: { (index, rect) in
             let x = Int(rect.origin.x)
