@@ -8,7 +8,7 @@ I haven't published this app to the Mac App Store. Any app appears on the store 
 
 ## Requirements
  - macOS 10.13+ (Running)
- - Xcode 10.2+ (Building)
+ - Xcode 11.1+ (Building)
 
 ## Compilation Instructions
 ### Option A (automatic):
