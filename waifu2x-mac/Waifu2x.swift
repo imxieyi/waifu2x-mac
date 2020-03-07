@@ -105,11 +105,11 @@ public struct Waifu2x {
             }
         }
         debugPrint("Really With Alpha: \(hasalpha)")
-        let out_width = width * 2
-        let out_height = height * 2
-        let out_fullWidth = fullWidth * 2
-        let out_fullHeight = fullHeight * 2
-        let out_block_size = Waifu2x.block_size * 2
+        let out_width = width * out_scale
+        let out_height = height * out_scale
+        let out_fullWidth = fullWidth * out_scale
+        let out_fullHeight = fullHeight * out_scale
+        let out_block_size = Waifu2x.block_size * out_scale
         let rects = fullCG.getCropRects()
         // Prepare for output pipeline
         // Merge arrays into one array
