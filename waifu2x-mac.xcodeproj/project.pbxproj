@@ -608,6 +608,7 @@
 					"@executable_path",
 					"@executable_path/waifu2x_mac.framework/Versions/A/Frameworks",
 					"@executable_path/../Frameworks",
+					"@executable_path/../Frameworks/waifu2x_mac.framework/Versions/A/Frameworks",
 				);
 				PRODUCT_NAME = waifu2x;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -631,6 +632,7 @@
 					"@executable_path",
 					"@executable_path/waifu2x_mac.framework/Versions/A/Frameworks",
 					"@executable_path/../Frameworks",
+					"@executable_path/../Frameworks/waifu2x_mac.framework/Versions/A/Frameworks",
 				);
 				PRODUCT_NAME = waifu2x;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -780,6 +782,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 					"@executable_path",
+					"@executable_path/../Frameworks/waifu2x_mac.framework/Versions/A/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "xieyi.waifu2x-mac";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -811,6 +814,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 					"@executable_path",
+					"@executable_path/../Frameworks/waifu2x_mac.framework/Versions/A/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "xieyi.waifu2x-mac";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
