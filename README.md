@@ -4,7 +4,10 @@ Waifu2x porting to macos, still in CoreML and Metal. For other details please re
 [![Build Status](https://travis-ci.org/imxieyi/waifu2x-mac.svg?branch=master)](https://travis-ci.org/imxieyi/waifu2x-mac)
 
 ## Disclaimer
-I haven't published this app to the Mac App Store. Any app appears on the store has nothing to do with me.
+I haven't published this app to the Mac App Store. Any app appears on the store that looks like this project has nothing to do with me.
+
+## About "waifu magnifier"
+The app "waifu magnifier" is based on waifu2x-ios instead of this project. It runs through [Mac Catalyst](https://developer.apple.com/mac-catalyst/). It is named like this for obvious reasons.
 
 ## Requirements
  - macOS 10.13+ (Running)
