@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -684,17 +685,66 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="waifu2x_mac_app" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="waifu2x" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1280" height="720"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <toolbar key="toolbar" implicitIdentifier="124EB9AE-481B-4AA7-81DE-9849D607B5B0" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="u8O-hG-p35">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="209D58D7-7126-42E8-9A00-F4C5F8EB10EB" label="Pick" paletteLabel="Pick" tag="-1" id="aJR-gF-56k" customClass="ToggableToolbarItem" customModule="waifu2x_mac_app" customModuleProvider="target">
+                                    <imageReference key="image" image="photo" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="59" height="30"/>
+                                    <size key="maxSize" width="59" height="30"/>
+                                    <connections>
+                                        <action selector="onPick:" target="B8D-0N-5wS" id="csl-SZ-knM"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="5DAE5530-AC75-4E80-9792-BB4D78FDB5D7" label="Config" paletteLabel="Config" tag="-1" id="nfI-lb-vVz" customClass="ToggableToolbarItem" customModule="waifu2x_mac_app" customModuleProvider="target">
+                                    <imageReference key="image" image="gear" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="51" height="34"/>
+                                    <size key="maxSize" width="51" height="34"/>
+                                    <connections>
+                                        <action selector="onConfig:" target="B8D-0N-5wS" id="UcA-jG-U3Z"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4B44C5B4-DE54-4A2E-9540-B79884CD5918" label="Process" paletteLabel="Process" tag="-1" id="gNR-te-qBP" customClass="ToggableToolbarItem" customModule="waifu2x_mac_app" customModuleProvider="target">
+                                    <imageReference key="image" image="wand.and.stars" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="49" height="32"/>
+                                    <size key="maxSize" width="49" height="32"/>
+                                    <connections>
+                                        <action selector="onProcess:" target="B8D-0N-5wS" id="cVv-xf-SLE"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="B148BE8D-2CF2-407A-8AD8-FC39E3F3D8B5" label="Save" paletteLabel="Save" tag="-1" id="XWy-9a-saY" customClass="ToggableToolbarItem" customModule="waifu2x_mac_app" customModuleProvider="target">
+                                    <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
+                                    <size key="minSize" width="46" height="33"/>
+                                    <size key="maxSize" width="46" height="33"/>
+                                    <connections>
+                                        <action selector="onSave:" target="B8D-0N-5wS" id="l2S-hI-xEn"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="q2h-eb-h9G"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="n2O-VV-xAI"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="nfI-lb-vVz"/>
+                                <toolbarItem reference="aJR-gF-56k"/>
+                                <toolbarItem reference="gNR-te-qBP"/>
+                                <toolbarItem reference="XWy-9a-saY"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="configBarItem" destination="nfI-lb-vVz" id="qFv-v9-7fx"/>
+                        <outlet property="pickBarItem" destination="aJR-gF-56k" id="450-Lk-2kH"/>
+                        <outlet property="processBarItem" destination="gNR-te-qBP" id="fIh-0m-Ft1"/>
+                        <outlet property="saveBarItem" destination="XWy-9a-saY" id="hXJ-hy-BsJ"/>
+                        <outlet property="toolbar" destination="u8O-hG-p35" id="2qi-cP-rsI"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
@@ -707,35 +757,15 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="waifu2x_mac_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1280" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1278" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r4u-Wb-jsD" customClass="DragImageView" customModule="waifu2x_mac_app" customModuleProvider="target">
-                                <rect key="frame" x="3" y="53" width="637" height="664"/>
+                                <rect key="frame" x="3" y="26" width="636" height="691"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="1nH-Sh-PQg"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ves-oJ-zWd">
-                                <rect key="frame" x="522" y="22" width="66" height="32"/>
-                                <buttonCell key="cell" type="push" title="Pick" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uNM-GZ-ZyH">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="pickImage:" target="XfG-lQ-9wD" id="pgR-pF-YVQ"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O6i-71-8CX">
-                                <rect key="frame" x="596" y="22" width="89" height="32"/>
-                                <buttonCell key="cell" type="push" title="Process" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a2v-0b-vfw">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="processImage:" target="XfG-lQ-9wD" id="dFI-QD-twE"/>
-                                </connections>
-                            </button>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FLe-LW-Gg9">
-                                <rect key="frame" x="4" y="6" width="1272" height="17"/>
+                                <rect key="frame" x="4" y="6" width="1270" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="cix-c9-uQE"/>
                                 </constraints>
@@ -745,43 +775,25 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pj9-5a-kbo">
-                                <rect key="frame" x="693" y="22" width="70" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLl-Nt-akk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="saveImage:" target="XfG-lQ-9wD" id="fI6-Vs-jL6"/>
-                                </connections>
-                            </button>
                             <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ve-eT-YHn">
-                                <rect key="frame" x="640" y="53" width="637" height="664"/>
+                                <rect key="frame" x="639" y="26" width="636" height="691"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="ebr-dh-UAa"/>
                             </imageView>
-                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="evC-3b-jGL">
-                                <rect key="frame" x="951" y="377" width="16" height="16"/>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="evC-3b-jGL">
+                                <rect key="frame" x="949" y="364" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Ves-oJ-zWd" firstAttribute="top" secondItem="3ve-eT-YHn" secondAttribute="bottom" constant="6" id="0tA-U9-p8m"/>
+                            <constraint firstItem="FLe-LW-Gg9" firstAttribute="top" secondItem="r4u-Wb-jsD" secondAttribute="bottom" constant="6" id="1Dm-xb-IzK"/>
                             <constraint firstItem="evC-3b-jGL" firstAttribute="centerY" secondItem="3ve-eT-YHn" secondAttribute="centerY" id="1YO-gO-Py2"/>
-                            <constraint firstItem="Pj9-5a-kbo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="O6i-71-8CX" secondAttribute="trailing" constant="12" symbolic="YES" id="2ke-WB-9Wg"/>
                             <constraint firstItem="r4u-Wb-jsD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="6" id="CEE-D8-lSA"/>
-                            <constraint firstAttribute="trailing" secondItem="Pj9-5a-kbo" secondAttribute="trailing" constant="523" id="Dag-a8-H1t"/>
-                            <constraint firstItem="Pj9-5a-kbo" firstAttribute="bottom" secondItem="Ves-oJ-zWd" secondAttribute="bottom" id="EzL-9r-3Rp"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="leading" secondItem="r4u-Wb-jsD" secondAttribute="trailing" constant="6" id="HOy-91-rDs"/>
                             <constraint firstItem="evC-3b-jGL" firstAttribute="centerX" secondItem="3ve-eT-YHn" secondAttribute="centerX" id="HjT-cN-e2d"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="leading" secondItem="r4u-Wb-jsD" secondAttribute="trailing" constant="6" id="I4V-yU-er5"/>
-                            <constraint firstItem="O6i-71-8CX" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="P7k-DK-SAI"/>
                             <constraint firstAttribute="trailing" secondItem="FLe-LW-Gg9" secondAttribute="trailing" constant="6" id="Pp3-pX-Li8"/>
-                            <constraint firstItem="FLe-LW-Gg9" firstAttribute="top" secondItem="O6i-71-8CX" secondAttribute="bottom" constant="6" id="UCs-hz-l4s"/>
                             <constraint firstAttribute="bottom" secondItem="FLe-LW-Gg9" secondAttribute="bottom" constant="6" id="XAH-eU-ypY"/>
-                            <constraint firstItem="O6i-71-8CX" firstAttribute="bottom" secondItem="Ves-oJ-zWd" secondAttribute="bottom" id="aGt-n9-lxG"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="6" id="bMu-cx-tcr"/>
-                            <constraint firstItem="Ves-oJ-zWd" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="528" id="h9x-B0-mxW"/>
                             <constraint firstItem="FLe-LW-Gg9" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="6" id="lco-u4-SS7"/>
-                            <constraint firstItem="O6i-71-8CX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ves-oJ-zWd" secondAttribute="trailing" constant="12" symbolic="YES" id="owp-J4-zyE"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="bottom" secondItem="r4u-Wb-jsD" secondAttribute="bottom" id="v6H-bK-Bxg"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="height" secondItem="r4u-Wb-jsD" secondAttribute="height" id="vmt-zz-CVl"/>
                             <constraint firstItem="3ve-eT-YHn" firstAttribute="width" secondItem="r4u-Wb-jsD" secondAttribute="width" id="wRo-nj-lvd"/>
@@ -791,9 +803,6 @@
                     <connections>
                         <outlet property="inImg" destination="r4u-Wb-jsD" id="8EJ-e7-aMf"/>
                         <outlet property="outImg" destination="3ve-eT-YHn" id="r9C-59-1Ks"/>
-                        <outlet property="pickBtn" destination="Ves-oJ-zWd" id="OSy-4z-AF9"/>
-                        <outlet property="processBtn" destination="O6i-71-8CX" id="7S2-RY-7R8"/>
-                        <outlet property="saveBtn" destination="Pj9-5a-kbo" id="YHR-Ve-fa6"/>
                         <outlet property="spinner" destination="evC-3b-jGL" id="Qcs-hZ-wXE"/>
                         <outlet property="status" destination="FLe-LW-Gg9" id="de3-z7-Cml"/>
                     </connections>
@@ -803,4 +812,10 @@
             <point key="canvasLocation" x="75" y="1139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="21" height="21"/>
+        <image name="photo" catalog="system" width="24" height="17"/>
+        <image name="square.and.arrow.down" catalog="system" width="19" height="20"/>
+        <image name="wand.and.stars" catalog="system" width="20" height="19"/>
+    </resources>
 </document>

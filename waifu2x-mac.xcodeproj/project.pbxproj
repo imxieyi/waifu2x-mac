@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5BA270B5219CFC890031CA9A /* waifu2x in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8AC3DBEB20D82B6F00644896 /* waifu2x */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8A051C75254228D00037FE9F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A051C74254228D00037FE9F /* MainWindowController.swift */; };
+		8A051C8D25422C930037FE9F /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A051C8C25422C930037FE9F /* ConfigView.swift */; };
+		8A4747982542337500A336E1 /* ConfigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4747972542337500A336E1 /* ConfigView.xib */; };
 		8A9919992265958A0094BCCF /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A9919942265958A0094BCCF /* white.png */; };
 		8AACE77A20D821B20060240C /* NSImage+PNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC63CC9201878FA001498E0 /* NSImage+PNG.swift */; };
 		8AB3FE6A2413FD51006BF451 /* CGImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB3FE692413FD51006BF451 /* CGImage+Crop.swift */; };
@@ -114,6 +117,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A051C74254228D00037FE9F /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		8A051C8C25422C930037FE9F /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		8A4747972542337500A336E1 /* ConfigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigView.xib; sourceTree = "<group>"; };
 		8A6F996E20D8288F00732686 /* libswiftAppKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftAppKit.tbd; path = System/Library/PrivateFrameworks/Swift/libswiftAppKit.tbd; sourceTree = SDKROOT; };
 		8A9142C420D8049500AF98FA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		8A9919942265958A0094BCCF /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
@@ -279,9 +285,12 @@
 			children = (
 				8AC63CCB201879BF001498E0 /* waifu2x-mac-app.entitlements */,
 				8AC63C572018466A001498E0 /* AppDelegate.swift */,
-				8AC63C592018466A001498E0 /* ViewController.swift */,
-				8AC63C5B2018466A001498E0 /* Assets.xcassets */,
 				8AC63C5D2018466A001498E0 /* Main.storyboard */,
+				8AC63C592018466A001498E0 /* ViewController.swift */,
+				8A051C74254228D00037FE9F /* MainWindowController.swift */,
+				8A4747972542337500A336E1 /* ConfigView.xib */,
+				8A051C8C25422C930037FE9F /* ConfigView.swift */,
+				8AC63C5B2018466A001498E0 /* Assets.xcassets */,
 				8AC63C602018466A001498E0 /* Info.plist */,
 				8AC63C612018466A001498E0 /* waifu2x_mac_app.entitlements */,
 			);
@@ -491,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC63C5C2018466A001498E0 /* Assets.xcassets in Resources */,
+				8A4747982542337500A336E1 /* ConfigView.xib in Resources */,
 				8AC63C5F2018466A001498E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,8 +568,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A051C8D25422C930037FE9F /* ConfigView.swift in Sources */,
 				8AC63C5A2018466A001498E0 /* ViewController.swift in Sources */,
 				8AC63C582018466A001498E0 /* AppDelegate.swift in Sources */,
+				8A051C75254228D00037FE9F /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
