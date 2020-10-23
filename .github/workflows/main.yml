@@ -1,0 +1,52 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+      - name: Set Xcode Version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_12.2.app/Contents/Developer
+
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Build App
+        run: |
+          xcodebuild clean build -scheme waifu2x-mac-app -configuration Release -destination generic/platform=macOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=$(pwd)/build
+          cd build
+          zip -y -r waifu2x-mac-app.zip waifu2x-mac-app.app
+          
+      - name: Build CLI
+        run: |
+          xcodebuild clean build -scheme waifu2x-mac-cli -configuration Release -destination generic/platform=macOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=$(pwd)/build
+          cd build
+          zip -y -r waifu2x-mac-cli.zip waifu2x waifu2x_mac.framework
+          
+      - name: Upload App
+        uses: actions/upload-artifact@v2
+        with:
+          name: waifu2x-mac-app
+          path: build/waifu2x-mac-app.zip
+          
+      - name: Upload CLI
+        uses: actions/upload-artifact@v2
+        with:
+          name: waifu2x-mac-cli
+          path: build/waifu2x-mac-cli.zip
