@@ -1,7 +1,0 @@
-os: osx
-osx_image: xcode11.1
-
-language: objective-c
-xcode_project: waifu2x-mac.xcodeproj # path to your xcodeproj folder
-xcode_scheme: waifu2x-macTests
-xcode_destination: platform=macOS
