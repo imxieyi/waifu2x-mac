@@ -1,5 +1,7 @@
 #  Waifu2x-mac
-Waifu2x porting to macos, still in CoreML and Metal. For other details please refer to [waifu2x-ios](https://github.com/imxieyi/waifu2x-ios).
+![CI](https://github.com/imxieyi/waifu2x-mac/workflows/CI/badge.svg)
+
+Waifu2x port to macOS, also in Core ML and Metal. For other details please refer to [waifu2x-ios](https://github.com/imxieyi/waifu2x-ios).
 
 ## Disclaimer
 I haven't published this app to the Mac App Store. Any app appears on the store that looks like this project has nothing to do with me.
@@ -10,9 +12,18 @@ The app "waifu magnifier" is based on waifu2x-ios instead of this project. It ru
 ## Requirements
  - macOS 10.13+ (Running)
  - Xcode 11.1+ (Building)
- 
-## Homebrew (Experimental)
-If you want to install with homebrew (CLI only):
+
+## Download
+Note that all pre-built binaries are not signed. You can either sign them yourself or go to system settings to bypass the signature check.
+
+### From Releases
+Go to [Releases](https://github.com/imxieyi/waifu2x-mac/releases) to get pre-built binaries. Not all release versions contain both GUI and CLI.
+
+### From GitHub Actions
+Go to [Actions](https://github.com/imxieyi/waifu2x-mac/actions) to fetch the latest build for both GUI and CLI. They will be removed automatically 90 days after being built.
+
+### Homebrew (Experimental, CLI only)
+If you want to install with homebrew:
 ```bash
 brew install imxieyi/waifu2x/waifu2x
 ```
