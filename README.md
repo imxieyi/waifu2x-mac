@@ -3,6 +3,21 @@
 
 Waifu2x port to macOS, also in Core ML and Metal. For other details please refer to [waifu2x-ios](https://github.com/imxieyi/waifu2x-ios).
 
+## Project Status
+I can't believe this really happened:
+
+![](app-store-rejection.jpg)
+
+My update to the "waifu magnifier" on macOS just got rejected. I admit that it's my fault that I never appealed the so-called "Waifu2x" app which pirated my code in this repo to Apple.
+
+I was still updating this project since that person pirated my code back in 2018. All of this suddenly becomes a joke now.
+
+I am extremetly upset about all of this. **So I decided to completely abandon this project.**
+
+You can still download past releases and send PRs for improvements. But don't expect any update from me in the future.
+
+**垃圾中国开发商，如果你还有良心，请立即将盗用我开源代码的App下架！**
+
 ## Disclaimer
 I haven't published this app to the Mac App Store. Any app appears on the store that looks like this project has nothing to do with me.
 
