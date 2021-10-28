@@ -22,7 +22,7 @@ public struct Waifu2x {
     /// Do not exactly know its function
     /// However it can on average improve PSNR by 0.09
     /// https://github.com/nagadomi/waifu2x/commit/797b45ae23665a1c5e3c481c018e48e6f0d0e383
-    static let clip_eta8 = Float((1.0 / 255.0) * 0.5 - (1.0e-7 * (1.0 / 255.0) * 0.5))
+    static let clip_eta8 = Float(0.00196)
     
     public static var interrupt = false
     
