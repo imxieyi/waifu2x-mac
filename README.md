@@ -12,11 +12,11 @@ My update to the "waifu magnifier" on macOS just got rejected. I admit that it's
 
 I was still updating this project since that person pirated my code back in 2018. All of this suddenly becomes a joke now.
 
-I am extremetly upset about all of this. **So I decided to completely abandon this project.**
+I am extremely upset about all of this. ~~**So I decided to completely abandon this project.**~~
 
-You can still download past releases and send PRs for improvements. But don't expect any update from me in the future.
+~~You can still download past releases and send PRs for improvements. But don't expect any update from me in the future.~~
 
-**垃圾中国开发商，如果你还有良心，请立即将盗用我开源代码的App下架！**
+**Update (2021-10-28):** The developer of "WaiFu2x" responded to my complaint through Apple. They have removed their App from the App Store and released the name. After calming down I have re-considered the future of this project. It was a huge mistake that I chose MIT as license. I'll still work on this in the future, but all newer changes will be released under a more strict license.
 
 ## Disclaimer
 I haven't published this app to the Mac App Store. Any app appears on the store that looks like this project has nothing to do with me.
