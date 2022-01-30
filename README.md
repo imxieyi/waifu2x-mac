@@ -18,11 +18,11 @@ I am extremely upset about all of this. ~~**So I decided to completely abandon t
 
 **Update (2021-10-28):** The developer of "WaiFu2x" responded to my complaint through Apple. They have removed their App from the App Store and released the name. After calming down I have re-considered the future of this project. It was a huge mistake that I chose MIT as license. I'll still work on this in the future, but all newer changes will be released under a more strict license.
 
-## Disclaimer
-I haven't published this app to the Mac App Store. Any app appears on the store that looks like this project has nothing to do with me.
+## About [waifu2x](https://itunes.apple.com/app/waifu2x/id1286485858) on the Mac App Store
+The app waifu2x on the MAS is based on waifu2x-ios instead of this project. It runs through [Mac Catalyst](https://developer.apple.com/mac-catalyst/).
 
-## About "waifu magnifier"
-The app "waifu magnifier" is based on waifu2x-ios instead of this project. It runs through [Mac Catalyst](https://developer.apple.com/mac-catalyst/). It is named like this for obvious reasons.
+## Disclaimer
+I haven't published an app based on this project to the Mac App Store. If any app appears on the store that looks like this project, it has nothing to do with me.
 
 ## Requirements
  - macOS 10.13+ (Running)
