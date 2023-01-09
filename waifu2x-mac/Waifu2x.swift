@@ -210,9 +210,12 @@ public struct Waifu2x {
                 for x_exp in x..<(x + Waifu2x.block_size + 2 * Waifu2x.shrink_size) {
                     x_new = x_exp - x
                     y_new = y_exp - y
-                    multi[y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new] = NSNumber(value: expanded[y_exp * expwidth + x_exp])
-                    multi[y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new + (block_size + 2 * Waifu2x.shrink_size) * (block_size + 2 * Waifu2x.shrink_size)] = NSNumber(value: expanded[y_exp * expwidth + x_exp + expwidth * expheight])
-                    multi[y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new + (block_size + 2 * Waifu2x.shrink_size) * (block_size + 2 * Waifu2x.shrink_size) * 2] = NSNumber(value: expanded[y_exp * expwidth + x_exp + expwidth * expheight * 2])
+                    var dest = y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new
+                    multi[dest] = NSNumber(value: expanded[y_exp * expwidth + x_exp])
+                    dest = y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new + (block_size + 2 * Waifu2x.shrink_size) * (block_size + 2 * Waifu2x.shrink_size)
+                    multi[dest] = NSNumber(value: expanded[y_exp * expwidth + x_exp + expwidth * expheight])
+                    dest = y_new * (Waifu2x.block_size + 2 * Waifu2x.shrink_size) + x_new + (block_size + 2 * Waifu2x.shrink_size) * (block_size + 2 * Waifu2x.shrink_size) * 2
+                    multi[dest] = NSNumber(value: expanded[y_exp * expwidth + x_exp + expwidth * expheight * 2])
                 }
             }
             model_pipeline.appendObject(multi)
