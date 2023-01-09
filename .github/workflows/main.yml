@@ -33,17 +33,17 @@ jobs:
           cd build
           zip -y -r waifu2x-mac-app.zip waifu2x-mac-app.app
           
-      - name: Build CLI
-        run: |
-          xcodebuild clean build -scheme waifu2x-mac-cli -configuration Release -destination generic/platform=macOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=$(pwd)/build
-          cd build
-          zip -y -r waifu2x-mac-cli.zip waifu2x waifu2x_mac.framework
-          
       - name: Upload App
         uses: actions/upload-artifact@v2
         with:
           name: waifu2x-mac-app
           path: build/waifu2x-mac-app.zip
+          
+      - name: Build CLI
+        run: |
+          xcodebuild clean build -scheme waifu2x-mac-cli -configuration Release -destination generic/platform=macOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=$(pwd)/build
+          cd build
+          zip -y -r waifu2x-mac-cli.zip waifu2x waifu2x_mac.framework
           
       - name: Upload CLI
         uses: actions/upload-artifact@v2
